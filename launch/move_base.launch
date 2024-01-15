@@ -1,0 +1,32 @@
+<launch>
+  <!-- Arguments -->
+  <arg name="cmd_vel_topic" default="/cmd_vel" />
+  <arg name="odom_topic" default="odom" />
+  <arg name="move_forward_only" default="false"/>
+
+  <!-- move_base -->
+  <node pkg="move_base" type="move_base" respawn="true" name="move_base" output="screen">
+ <rosparam file="$(find swot_navigation)/param/move_base_params.yaml" command="load" />
+
+<!-- costmap -->
+    <rosparam file="$(find swot_navigation)/param/costmap_common_params_evocortex.yaml" command="load" ns="global_costmap" />
+    <rosparam file="$(find swot_navigation)/param/costmap_common_params_evocortex.yaml" command="load" ns="local_costmap" />
+    <rosparam file="$(find swot_navigation)/param/local_costmap_params.yaml" command="load" />
+    <rosparam file="$(find swot_navigation)/param/global_costmap_params.yaml" command="load" />
+
+<!-- local planner -->
+  <rosparam file="$(find swot_navigation)/param/teb_local_planner_params.yaml" command="load" />
+<!-- <rosparam file="$(find swot_navigation)/param/base_local_planner_params.yaml" command="load" /> -->
+  <!-- <rosparam file="$(find swot_navigation)/param/dwa_local_planner_params_evocortex.yaml" command="load" />  -->
+ <!-- <rosparam file="$(find swot_navigation)/param/eband_local_planner_params.yaml" command="load" /> 
+  <rosparam param="base_local_planner">eband_local_planner/EBandPlannerROS</rosparam> /> -->
+
+
+<!-- global planner -->
+  <rosparam file="$(find swot_navigation)/param/global_planner_params.yaml" command="load" /> 
+<!-- <rosparam file="$(find swot_navigation)/param/nafvn_planner_params.yaml" command="load" /> -->
+
+    <remap from="cmd_vel" to="$(arg cmd_vel_topic)"/>
+    <remap from="odom" to="$(arg odom_topic)"/>
+  </node>
+</launch>

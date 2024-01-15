@@ -1,0 +1,97 @@
+TebLocalPlannerROS:
+
+
+ odom_topic: odom # name of odom topic
+ map_frame: map #name of map frame
+ odom_model_type: omni # type of robot (diff or omni) (not necessary anymore)
+    
+ # Trajectory Configuration
+ dt_ref: 0.3 #Determines the desired resolution of the trajectory: small values lead to a fine resolution and thus a better approximation of the kinodynamic model, but many points must be optimized (major impact on optimization time). Too high values (> 0.6s) can lead to trajectories that are not feasible anymore due to the poor approximation of the kinodynamic model (especially in case of car-like robots)
+ dt_hysteresis: 0.03 #Hysteresis for automatic resizing depending on the current temporal resolution, usually approx. 10% of dt_ref is recommended
+ global_plan_overwrite_orientation: True #changed 12.05.23 true->false
+ max_global_plan_lookahead_dist: 3.0 #Specify the maximum length (cumulative Euclidean distances) of the subset of the global plan taken into account for optimization. The actual length is than determined by the logical conjunction of the local costmap size and this maximum bound. Set to zero or negative in order to deactivate this limitation.
+ #max_global_plan_lookahead_dist changed 12.05.23: 3.0 -> 8.0
+ feasibility_check_no_poses: 5
+    
+ # Robot Configuration
+        
+ max_vel_x: 0.5 #0.4
+ max_vel_x_backwards: 0.3 #0.2
+ max_vel_y: 0.3 #0.2
+ max_vel_theta: 0.3 #0.2
+ acc_lim_x: 0.3 #0.25
+ acc_lim_y: 0.3 #0.25
+ acc_lim_theta: 0.3 #0.25
+ min_turning_radius: 0.0
+ wheelbase: 0.0
+ footprint_model: # types: "point", "circular", "two_circles", "line", "polygon"
+   type: "polygon"
+   vertices: [[0.32, 0.22], [0.32, -0.22], [-0.32, -0.22], [-0.32, 0.22]]
+
+ # GoalTolerance Parameters  
+ xy_goal_tolerance: 0.03 #changed 12.05.23: 0.02 -> 0.03
+ yaw_goal_tolerance: 3.1 #0.017 # Means 1 Degree #0.15 #changed 12.05.23: 0.01 -> 0.02
+ free_goal_vel: False # Remove the goal velocity constraint such that the robot can arrive at the goal with maximum speed
+
+ # ViaPoints
+ global_plan_viapoint_sep: 0.1
+    
+ # Obstacles 
+ min_obstacle_dist: 0.035 #0.25 #changed 12.05.23: 0.1 -> 0.03 , same as costmap footprint_padding  # magdeburg 0.025
+ inflation_dist: 0.35 #changed 12.05.23: 0.25  -> 0.35 size same as costmap inflation  # magdeburg 0.35
+ #dynamic_inflation_dist: 0.05 #changed 12.05.23: disabled
+ include_costmap_obstacles: True
+ include_dynamic_obstacles: True
+ costmap_obstacles_behind_robot_dist: 3.0 #Since the local costmap is centered at the current robot position, not all obstacles behind the robot must be taken into account. To allow safe turning behaviors, this value should be non-zero. A higher value includes more obstacles for optimization.
+ obstacle_poses_affected: 30 #Number of nearest neighbors on the trajectory taken into account (increases the number of distance calculations for each obstacle). For small obstacles and point obstacles, this value can be small (<10). Increase the value again if the trajectory is not smooth enough close to obstacles.
+
+
+ # Costmap converter plugin  
+ costmap_converter_plugin: "costmap_converter::CostmapToPolygonsDBSMCCH"
+ costmap_converter_spin_thread: True
+ costmap_converter_rate: 10
+ 
+ costmap_converter/CostmapToLinesDBSRANSAC:
+  cluster_max_distance: 0.4
+  cluster_min_pts: 2
+  ransac_inlier_distance: 0.15
+  ransac_min_inliers: 10
+  ransac_no_iterations: 2000
+  ransac_remainig_outliers: 3
+  ransac_convert_outlier_pts: True
+  ransac_filter_remaining_outlier_pts: False
+  convex_hull_min_pt_separation: 0.1
+
+
+ # Optimization 
+ no_inner_iterations: 5 #Number of solver calls in each “outer-iteration”. Highly influences the computation time but also the quality of the solution.
+ no_outer_iterations: 4 #Number of outer iterations for each sampling interval that specifies how often the trajectory is resized to account for dt_ref and how often associations between obstacles and planned poses are renewed. Also the solver is called each iteration. The value significantly influences the computation time as well as convergence propertie
+ optimization_activate: True
+ optimization_verbose: False
+ penalty_epsilon: 0.1
+ weight_max_vel_x: 100
+ weight_max_vel_theta: 1
+ weight_acc_lim_x: 1 #You can ignore acceleration limits by setting the weight to 0.0. By doing so the complexity of the optimization and hence the computation time can be reduced.
+ weight_acc_lim_theta: 1
+ weight_kinematics_nh: 0.1
+ weight_kinematics_forward_drive: 10
+ weight_kinematics_turning_radius: 0
+ weight_optimaltime: 0.1
+ weight_obstacle: 50
+ weight_viapoint: 2
+
+ # Trajectory
+ allow_init_with_backwards_motion: false  
+
+ # Homotopy Class Planner
+ enable_homotopy_class_planning: False #If you only have timing problems in case multiple alternatives are computed, set the alternative planning to false or first restrict the number of alternatives using max_number_classes
+ enable_multithreading: True
+ simple_exploration: False
+ max_number_classes: 4 #Restrict the number of alternative trajectories that are subject to optimization. Often 2 alternatives are sufficient (avoid obstacles on the left or right side).
+ roadmap_graph_no_samples: 15
+ roadmap_graph_area_width: 5
+ h_signature_prescaler: 0.5
+ h_signature_threshold: 0.1
+ obstacle_keypoint_offset: 0.1
+ obstacle_heading_threshold: 0.45
+ visualize_hc_graph: False

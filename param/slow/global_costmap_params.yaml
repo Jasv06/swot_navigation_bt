@@ -1,0 +1,15 @@
+global_costmap: 
+    global_frame: map
+    robot_base_frame: base_footprint
+    transform_tolerance: 1.0
+    update_frequency: 5.0
+    publish_frequency: 5.0
+    #static_map: true
+    plugins:
+    - {name: static_layer_1,            type: "costmap_2d::StaticLayer"}
+    #- {name: static_layer_2,            type: "costmap_2d::StaticLayer"}
+    - {name: obstacle_layer,          type: "costmap_2d::VoxelLayer"}
+    - {name: inflation_layer,         type: "costmap_2d::InflationLayer"}
+
+# watch out! inflation layer has to be last, otherwise the layers will NOT be included (not known when creating inflation layer)
+

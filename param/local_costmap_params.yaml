@@ -1,0 +1,16 @@
+local_costmap:
+   global_frame: map # odom
+   robot_base_frame: base_footprint
+   transform_tolerance: 0.5
+   update_frequency: 10.0 # magdeburg 10
+   publish_frequency: 10.0 # magdeburg 5
+   rolling_window: true
+   static_map: True # changed 12.05.23 false->true
+   width: 3.0 #Size of the local costmap: implies maximum trajectory length and how many occupied cells are taken into account (major impact on computation time, but if too small: short prediction/planning horizon reduces the degrees of freedom, e.g. for obstacle avoidance)
+   height: 3.0
+   resolution: 0.01 
+   plugins:
+   - {name: static_layer_1,      type: "costmap_2d::StaticLayer"} # added 12.05.23 
+   - {name: obstacle_layer,      type: "costmap_2d::VoxelLayer"}
+   - {name: inflation_layer,     type: "costmap_2d::InflationLayer"}
+ 

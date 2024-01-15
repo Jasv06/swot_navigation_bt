@@ -1,0 +1,7 @@
+<launch>
+
+<!-- Start swot_navigation_monitoring service-->
+<node pkg="swot_navigation" type="swot_navigation_monitoring_node" name="swot_navigation_monitoring" respawn="true">
+</node>
+
+</launch>

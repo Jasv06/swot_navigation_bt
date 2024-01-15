@@ -1,0 +1,61 @@
+<launch>
+  <!--http://wiki.ros.org/amcl-->
+
+  <!-- Arguments -->
+    <arg name="scan_topic" default="/scan_front"/>     <!-- # topic name for the sensor values from the distance sensor -->
+    <arg name ="map_topic" default="/map_amcl"/>
+    <arg name="initial_pose_x" default="0.18295"/>      <!-- # initial x-coordinate value -->
+    <arg name="initial_pose_y" default="0.072689"/>      <!-- # initial y-coordinate value -->
+    <arg name="initial_pose_a" default="0.002"/>      <!-- # initial yaw coordinate value in radiants -->
+
+
+    <!-- ######################## execute the amcl node by referring to the parameter settings below. ######################## -->
+
+    <node pkg="amcl" type="amcl" name="amcl">
+
+        <param name="min_particles" value="500"/>         <!-- # min number of particles allowed -->
+        <param name="max_particles" value="2000"/>        <!-- # max number of particles allowed -->
+        <param name="kld_err"       value="0.01"/>        <!-- # max error between the actual distribution and the estimated distribution -->
+        <param name="update_min_d" value="0.15"/>          <!-- # translational motion required for filter update (meter) -->
+        <param name="update_min_a" value="0.35"/>          <!-- # rotational motion required for filter update (radian)  -->
+        <param name="resample_interval" value="1"/>       <!-- # resampling interval  -->
+        <param name="transform_tolerance" value="0.5"/>   <!-- # conversion allowed time (by sec)  -->
+        <param name="recovery_alpha_slow" value="0.0"/>   <!-- # index drop rate(slow average weight filter), deactivated if 0.0  -->
+        <param name="recovery_alpha_fast" value="0.0"/>   <!-- # index drop rate(fast average weight filter), deactivated if 0.0  -->
+        <param name="initial_pose_x" value="$(arg initial_pose_x)"/>  <!-- # refer to above initial_pose_x  -->
+        <param name="initial_pose_y" value="$(arg initial_pose_y)"/>  <!-- # refer to above initial_pose_y  -->
+        <param name="initial_pose_a" value="$(arg initial_pose_a)"/>  <!-- # refer to above initial_pose_a  -->
+        <param name="gui_publish_rate" value="-1"/>     <!-- # max period to visually displaying scan and path info  -->
+        <param name="use_map_topic" value= "true" />    <!-- # same as the explanation for use_map_topic  -->
+
+        <!-- ######################## distance sensor parameter ######################## -->
+
+        <remap from="scan" to="$(arg scan_topic)"/>       <!-- # change the sensor topic name  -->
+        <remap from="map" to="$(arg map_topic)"/>       <!-- # change the sensor topic name  -->
+        <!--<param name="laser_min_range" value="-1"/>        # Minimum scan range to be considered; -1.0 will cause the laser's reported minimum range to be used.   -->
+        <param name="laser_max_range" value="5.0"/>       <!-- # max distance of laser sensing distance  -->
+        <param name="laser_max_beams" value="60"/>       <!-- # max number of laser beams used during filter update -->
+                                                            
+        <param name="laser_z_hit" value="0.95"/>           <!-- # z_hit mixed weight of sensor model    -->
+        <param name="laser_z_short" value="0.1"/>        <!-- # z_short mixed weight of sensor model   --> 
+        <param name="laser_z_max" value="0.05"/>          <!-- # z_max mixed weight of sensor model  --> 
+        <param name="laser_z_rand" value="0.05"/>          <!-- # x_rand mixed weight of sensor model -->   
+        <param name="laser_sigma_hit" value="0.2"/>       <!-- # standard deviation of Gaussian model using z_hit of sensor -->
+                                                            
+        <param name="laser_lambda_short" value="0.1"/>    <!-- # index drop rate parameter for z_short of sensor  -->
+        <param name="laser_likelihood_max_dist" value="2.0"/>     <!-- # max distance and obstacle for likelihood_field method sensor  -->
+        <param name="laser_model_type" value="likelihood_field"/> <!-- # select likelihood_field or beam  -->
+
+        <!-- ######################## parameter related to odometry ######################## -->
+
+        <param name="odom_model_type" value="omni"/>       <!-- # robot driving methods. "diff" or "omni" can be selected -->
+        <param name="odom_alpha1" value="0.1"/>           <!-- # estimated rotational motion noise of the odometry during rotational motion -->
+        <param name="odom_alpha2" value="0.1"/>           <!-- # estimated rotational motion noise of the odometry during translation motion -->
+        <param name="odom_alpha3" value="0.1"/>           <!-- # estimated translation motion noise of the odometry during translation motion  -->
+        <param name="odom_alpha4" value="0.1"/>           <!-- # estimated translation motion noise of the odometry during rotational motion   -->
+	      <param name="odom_alpha5" value="0.1"/>           <!-- Translation-related noise parameter (only used if model is "omni").  -->
+        <param name="odom_frame_id" value="odom"/>             <!-- # odometry frame  -->
+        <param name="base_frame_id" value="base_footprint"/>   <!-- # robot base frame  -->
+
+  </node>
+</launch>

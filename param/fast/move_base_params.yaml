@@ -1,0 +1,77 @@
+
+base_global_planner: "global_planner/GlobalPlanner"
+#base_global_planner: "navfn/NavfnROS"
+
+
+ 
+base_local_planner: "teb_local_planner/TebLocalPlannerROS"
+#base_local_planner: "base_local_planner/TrajectoryPlannerROS"
+#base_local_planner: "eband_local_planner/EbandPlannerROS"
+#base_local_planner: "dwa_local_planner/DWAPlannerROS"
+
+
+recovery_behaviors:
+  - name: 'level1_recovery' # clear costmaps (moderately)
+    type: 'clear_costmap_recovery/ClearCostmapRecovery'
+  - name: 'level2_recovery' # clear costmaps more aggressive
+    type: 'clear_costmap_recovery/ClearCostmapRecovery'
+
+
+level1_recovery:
+    reset_distance: 1.0
+    layer_names: ['obstacle_layer']
+
+level2_recovery:
+    reset_distance: 4.0
+    layer_names: ['obstacle_layer']
+
+
+recovery_behavior_enabled: true # default true
+clearing_rotation_allowed: true # default true
+
+
+
+
+
+shutdown_costmaps: false
+# shutdown_costmaps (bool, default: false)
+# Determines whether or not to shutdown the costmaps of the node when move_base is in an inactive state 
+
+controller_frequency: 20.0
+# controller_frequency (double, default: 20.0)
+# The rate in Hz at which to run the control loop and send velocity commands to the base. 
+
+planner_patience: 5.0
+# planner_patience (double, default: 5.0)
+# How long the planner will wait in seconds in an attempt to find a valid plan before space-clearing operations are performed. 
+
+controller_patience: 5.0
+# controller_patience (double, default: 15.0)
+# How long the controller will wait in seconds without receiving a valid control before space-clearing 
+# operations are performed. 
+
+conservative_reset_dist: 3.0
+# conservative_reset_dist (double, default: 3.0)
+# The distance away from the robot in meters beyond which obstacles will be cleared from the costmap 
+# when attempting to clear space in the map. Note, this parameter is only used when the default recovery 
+# behaviors are used for move_base. 
+
+planner_frequency: 0.0
+# planner_frequency (double, default: 0.0)
+# The rate in Hz at which to run the global planning loop. If the frequency is set to 0.0, the global planner 
+# will only run when a new goal is received or the local planner reports that its path is blocked. New in navigation 1.6.0
+
+oscillation_timeout: 5.0
+# oscillation_timeout (double, default: 0.0)
+# How long in seconds to allow for oscillation before executing recovery behaviors. A value of 0.0 
+# corresponds to an infinite timeout. New in navigation 1.3.1
+
+oscillation_distance: 0.2
+# oscillation_distance (double, default: 0.5)
+# How far in meters the robot must move to be considered not to be oscillating. Moving this far resets the timer 
+# counting up to the ~oscillation_timeout New in navigation 1.3.1
+
+max_planning_retries: 1.0
+
+
+
