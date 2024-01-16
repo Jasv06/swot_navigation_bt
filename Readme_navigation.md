@@ -1,8 +1,8 @@
 **Readme for navigation of Team SWOT**
 
-- **author:** Fabio Mast
-- **contact:** fabio.mast@student.fhws.de
-- **date:** 31.01.2022
+- **author:** Joel Santos
+- **contact:** joel.santosvalle@study.thws.de
+- **date:** 01.01.2024
 
 **1. Start the connection with the Jetson TX2.**
   - `ssh irobot@192.168.0.2`
