@@ -1,206 +1,0 @@
------------------------------------------------------------
-Profile:                     default
-Extending:          [cached] /opt/ros/noetic
-Workspace:                   /home/irobot/catkin_ws
------------------------------------------------------------
-Build Space:        [exists] /home/irobot/catkin_ws/build
-Devel Space:        [exists] /home/irobot/catkin_ws/devel
-Install Space:      [unused] /home/irobot/catkin_ws/install
-Log Space:          [exists] /home/irobot/catkin_ws/logs
-Source Space:       [exists] /home/irobot/catkin_ws/src
-DESTDIR:            [unused] None
------------------------------------------------------------
-Devel Space Layout:          linked
-Install Space Layout:        None
------------------------------------------------------------
-Additional CMake Args:       None
-Additional Make Args:        None
-Additional catkin Make Args: None
-Internal Make Job Server:    True
-Cache Job Environments:      False
------------------------------------------------------------
-Buildlisted Packages:        None
-Skiplisted Packages:         None
------------------------------------------------------------
-Workspace configuration appears valid.
------------------------------------------------------------
-[build] Found 11 packages in 0.0 seconds.                                      
-[build] Package table is up to date.                                           
-Starting >>> azure_kinect_ros_driver                                           
-Starting >>> behaviortree_cpp                                                  
-Starting >>> darknet_ros_msgs                                                  
-Starting >>> swot_gazebo                                                       
-Starting >>> swot_slam                                                         
-Starting >>> swot_tape_detection                                               
-Starting >>> swot_teleop                                                       
-[build 0.1 s] [0/11 complete] [7/64 jobs] [5 queued] [swot_teleop:loadenv -... Finished <<< swot_slam                              [ 0.1 seconds ]            
-[build 0.2 s] [1/11 complete] [6/64 jobs] [4 queued] [behaviortree_cpp:load... Finished <<< swot_teleop                            [ 0.1 seconds ]            
-[build 0.3 s] [2/11 complete] [5/64 jobs] [3 queued] [swot_tape_detection:l... [build 0.4 s] [2/11 complete] [5/64 jobs] [1 queued] [behaviortree_cpp:make... Finished <<< behaviortree_cpp                       [ 0.2 seconds ]            
-Finished <<< swot_tape_detection                    [ 0.2 seconds ]            
-Finished <<< swot_gazebo                            [ 0.1 seconds ]            
-[build 0.5 s] [5/11 complete] [2/64 jobs] [0 queued] [azure_kinect_ros_driv... [build 0.6 s] [5/11 complete] [3/64 jobs] [0 queued] [darknet_ros_msgs:make... Finished <<< darknet_ros_msgs                       [ 0.2 seconds ]            
-Starting >>> darknet_ros                                                       
-Starting >>> swot_msgs                                                         
-Finished <<< azure_kinect_ros_driver                [ 0.2 seconds ]            
-[build 0.7 s] [7/11 complete] [2/64 jobs] [1 queued] [swot_msgs:loadenv - 0.1] [build 0.8 s] [7/11 complete] [10/64 jobs] [0 queued] [swot_msgs:make (0%) ... Finished <<< swot_msgs                              [ 0.2 seconds ]            
-Starting >>> swot_pose_controller                                              
-[build 0.9 s] [8/11 complete] [2/64 jobs] [0 queued] [darknet_ros:make (0%)... [build 1.0 s] [8/11 complete] [2/64 jobs] [0 queued] [darknet_ros:make (100... Finished <<< darknet_ros                            [ 0.3 seconds ]            
-Finished <<< swot_pose_controller                   [ 0.2 seconds ]            
-Starting >>> swot_navigation                                                   
-[build 1.1 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:load... [build 1.2 s] [10/11 complete] [44/64 jobs] [0 queued] [swot_navigation:mak... [build 1.3 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.4 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.5 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.6 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.7 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.8 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.9 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.0 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.1 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.2 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.3 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.4 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.5 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.6 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.7 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.8 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.9 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.0 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.1 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.2 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.3 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.4 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.5 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.6 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.7 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.8 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.9 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 4.0 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... _______________________________________________________________________________
-Errors << swot_navigation:make /home/irobot/catkin_ws/logs/swot_navigation/build.make.015.log
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:[m[K In member function ‘[01m[KClient Navigation::get_ac()[m[K’:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:305:18:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kactionlib::SimpleActionClient<move_base_msgs::MoveBaseAction_<std::allocator<void> > >::SimpleActionClient(actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction_<std::allocator<void> > >&)[m[K’
-  305 |     return this->[01;31m[Kac[m[K;
-      |                  [01;31m[K^~[m[K
-In file included from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:72:7:[m[K [01;36m[Knote: [m[K‘[01m[Kactionlib::SimpleActionClient<move_base_msgs::MoveBaseAction_<std::allocator<void> > >::SimpleActionClient(actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction_<std::allocator<void> > >&)[m[K’ is implicitly deleted because the default definition would be ill-formed:
-   72 | class [01;36m[KSimpleActionClient[m[K
-      |       [01;36m[K^~~~~~~~~~~~~~~~~~[m[K
-[01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:72:7:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kboost::condition_variable_any::condition_variable_any(const boost::condition_variable_any&)[m[K’
-In file included from [01m[K/usr/include/boost/thread/detail/move.hpp:24[m[K,
-                 from [01m[K/usr/include/boost/thread/lock_types.hpp:11[m[K,
-                 from [01m[K/usr/include/boost/thread/pthread/mutex.hpp:16[m[K,
-                 from [01m[K/usr/include/boost/thread/mutex.hpp:16[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/publisher.h:36[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/node_handle.h:32[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:45[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/boost/thread/pthread/condition_variable.hpp:166:9:[m[K [01;36m[Knote: [m[Kdeclared here
-  166 |         [01;36m[KBOOST_THREAD_NO_COPYABLE[m[K(condition_variable_any)
-      |         [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:72:7:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kboost::mutex::mutex(const boost::mutex&)[m[K’
-   72 | class [01;31m[KSimpleActionClient[m[K
-      |       [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/usr/include/boost/thread/detail/move.hpp:24[m[K,
-                 from [01m[K/usr/include/boost/thread/lock_types.hpp:11[m[K,
-                 from [01m[K/usr/include/boost/thread/pthread/mutex.hpp:16[m[K,
-                 from [01m[K/usr/include/boost/thread/mutex.hpp:16[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/publisher.h:36[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/node_handle.h:32[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:45[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/boost/thread/pthread/mutex.hpp:44:9:[m[K [01;36m[Knote: [m[Kdeclared here
-   44 |         [01;36m[KBOOST_THREAD_NO_COPYABLE[m[K(mutex)
-      |         [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:72:7:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kboost::mutex::mutex(const boost::mutex&)[m[K’
-   72 | class [01;31m[KSimpleActionClient[m[K
-      |       [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/usr/include/boost/thread/detail/move.hpp:24[m[K,
-                 from [01m[K/usr/include/boost/thread/lock_types.hpp:11[m[K,
-                 from [01m[K/usr/include/boost/thread/pthread/mutex.hpp:16[m[K,
-                 from [01m[K/usr/include/boost/thread/mutex.hpp:16[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/publisher.h:36[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/node_handle.h:32[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:45[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/boost/thread/pthread/mutex.hpp:44:9:[m[K [01;36m[Knote: [m[Kdeclared here
-   44 |         [01;36m[KBOOST_THREAD_NO_COPYABLE[m[K(mutex)
-      |         [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:72:7:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kros::CallbackQueue::CallbackQueue(ros::CallbackQueue&)[m[K’
-   72 | class [01;31m[KSimpleActionClient[m[K
-      |       [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:46[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/opt/ros/noetic/include/ros/callback_queue.h:57:19:[m[K [01;36m[Knote: [m[K‘[01m[Kros::CallbackQueue::CallbackQueue(ros::CallbackQueue&)[m[K’ is implicitly deleted because the default definition would be ill-formed:
-   57 | class ROSCPP_DECL [01;36m[KCallbackQueue[m[K : public CallbackQueueInterface
-      |                   [01;36m[K^~~~~~~~~~~~~[m[K
-[01m[K/opt/ros/noetic/include/ros/callback_queue.h:57:19:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kboost::mutex::mutex(const boost::mutex&)[m[K’
-In file included from [01m[K/usr/include/boost/thread/detail/move.hpp:24[m[K,
-                 from [01m[K/usr/include/boost/thread/lock_types.hpp:11[m[K,
-                 from [01m[K/usr/include/boost/thread/pthread/mutex.hpp:16[m[K,
-                 from [01m[K/usr/include/boost/thread/mutex.hpp:16[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/publisher.h:36[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/node_handle.h:32[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:45[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/boost/thread/pthread/mutex.hpp:44:9:[m[K [01;36m[Knote: [m[Kdeclared here
-   44 |         [01;36m[KBOOST_THREAD_NO_COPYABLE[m[K(mutex)
-      |         [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:46[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/opt/ros/noetic/include/ros/callback_queue.h:57:19:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kboost::condition_variable::condition_variable(const boost::condition_variable&)[m[K’
-   57 | class ROSCPP_DECL [01;31m[KCallbackQueue[m[K : public CallbackQueueInterface
-      |                   [01;31m[K^~~~~~~~~~~~~[m[K
-In file included from [01m[K/usr/include/boost/thread/detail/move.hpp:24[m[K,
-                 from [01m[K/usr/include/boost/thread/lock_types.hpp:11[m[K,
-                 from [01m[K/usr/include/boost/thread/pthread/mutex.hpp:16[m[K,
-                 from [01m[K/usr/include/boost/thread/mutex.hpp:16[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/publisher.h:36[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/node_handle.h:32[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:45[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/boost/thread/pthread/condition_variable_fwd.hpp:52:7:[m[K [01;36m[Knote: [m[Kdeclared here
-   52 |       [01;36m[KBOOST_THREAD_NO_COPYABLE[m[K(condition_variable)
-      |       [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:46[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/opt/ros/noetic/include/ros/callback_queue.h:57:19:[m[K [01;31m[Kerror: [m[Kuse of deleted function ‘[01m[Kboost::mutex::mutex(const boost::mutex&)[m[K’
-   57 | class ROSCPP_DECL [01;31m[KCallbackQueue[m[K : public CallbackQueueInterface
-      |                   [01;31m[K^~~~~~~~~~~~~[m[K
-In file included from [01m[K/usr/include/boost/thread/detail/move.hpp:24[m[K,
-                 from [01m[K/usr/include/boost/thread/lock_types.hpp:11[m[K,
-                 from [01m[K/usr/include/boost/thread/pthread/mutex.hpp:16[m[K,
-                 from [01m[K/usr/include/boost/thread/mutex.hpp:16[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/publisher.h:36[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/node_handle.h:32[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:45[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/boost/thread/pthread/mutex.hpp:44:9:[m[K [01;36m[Knote: [m[Kdeclared here
-   44 |         [01;36m[KBOOST_THREAD_NO_COPYABLE[m[K(mutex)
-      |         [01;36m[K^~~~~~~~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:46[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/opt/ros/noetic/include/ros/callback_queue.h:57:19:[m[K [01;31m[Kerror: [m[K‘[01m[Kboost::thread_specific_ptr<T>::thread_specific_ptr(boost::thread_specific_ptr<T>&) [with T = ros::CallbackQueue::TLS][m[K’ is private within this context
-   57 | class ROSCPP_DECL [01;31m[KCallbackQueue[m[K : public CallbackQueueInterface
-      |                   [01;31m[K^~~~~~~~~~~~~[m[K
-In file included from [01m[K/opt/ros/noetic/include/ros/callback_queue.h:46[m[K,
-                 from [01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:46[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/boost/thread/tss.hpp:32:9:[m[K [01;36m[Knote: [m[Kdeclared private here
-   32 |         [01;36m[Kthread_specific_ptr[m[K(thread_specific_ptr&);
-      |         [01;36m[K^~~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:72:7:[m[K [01;31m[Kerror: [m[K‘[01m[Kboost::scoped_ptr<T>::scoped_ptr(const boost::scoped_ptr<T>&) [with T = actionlib::ActionClient<move_base_msgs::MoveBaseAction_<std::allocator<void> > >][m[K’ is private within this context
-   72 | class [01;31m[KSimpleActionClient[m[K
-      |       [01;31m[K^~~~~~~~~~~~~~~~~~[m[K
-In file included from [01m[K/usr/include/boost/scoped_ptr.hpp:13[m[K,
-                 from [01m[K/opt/ros/noetic/include/actionlib/client/simple_action_client.h:40[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:24[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/boost/smart_ptr/scoped_ptr.hpp:53:5:[m[K [01;36m[Knote: [m[Kdeclared private here
-   53 |     [01;36m[Kscoped_ptr[m[K(scoped_ptr const &);
-      |     [01;36m[K^~~~~~~~~~[m[K
-make[2]: *** [CMakeFiles/swot_navigation_lib.dir/build.make:63: CMakeFiles/swot_navigation_lib.dir/src/swot_robocup_navigation.cpp.o] Error 1
-make[1]: *** [CMakeFiles/Makefile2:264: CMakeFiles/swot_navigation_lib.dir/all] Error 2
-make: *** [Makefile:141: all] Error 2
-cd /home/irobot/catkin_ws/build/swot_navigation; catkin build --get-env swot_navigation | catkin env -si  /usr/bin/make --jobserver-auth=3,4; cd -
-
-...............................................................................
-Failed << swot_navigation:make                    [ Exited with code 2 ]       
-Failed <<< swot_navigation                        [ 3.0 seconds ]              
-[build] Summary: 10 of 11 packages succeeded.                                  
-[build] Ignored: None.                                                         
-[build] Warnings: None.                                                        
-[build] Abandoned: No packages were abandoned.                                 
-[build] Failed: 1 packages failed.                                             
-[build] Runtime: 4.1 seconds total.                                            
