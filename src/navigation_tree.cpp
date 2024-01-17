@@ -209,5 +209,5 @@ BT::NodeStatus Nav_four::tick()
             return BT::NodeStatus::SUCCESS;
         }   
     }
-    return BT::NodeStatus::FAILURE;
+    return BT::NodeStatus::SUCCESS;
 }  
