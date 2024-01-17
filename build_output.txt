@@ -35,317 +35,20 @@ Starting >>> swot_tape_detection
 Starting >>> swot_teleop                                                       
 [build 0.1 s] [0/11 complete] [7/64 jobs] [5 queued] [swot_tape_detection:l... [build 0.2 s] [0/11 complete] [13/64 jobs] [4 queued] [behaviortree_cpp:mak... Finished <<< swot_tape_detection                    [ 0.2 seconds ]            
 Finished <<< behaviortree_cpp                       [ 0.3 seconds ]            
-Finished <<< swot_gazebo                            [ 0.1 seconds ]            
-[build 0.3 s] [3/11 complete] [4/64 jobs] [3 queued] [azure_kinect_ros_driv... [build 0.4 s] [3/11 complete] [4/64 jobs] [2 queued] [azure_kinect_ros_driv... Finished <<< azure_kinect_ros_driver                [ 0.2 seconds ]            
-[build 0.5 s] [4/11 complete] [7/64 jobs] [0 queued] [darknet_ros_msgs:make... Finished <<< swot_teleop                            [ 0.1 seconds ]            
-Finished <<< darknet_ros_msgs                       [ 0.2 seconds ]            
+[build 0.3 s] [2/11 complete] [5/64 jobs] [3 queued] [azure_kinect_ros_driv... Finished <<< swot_gazebo                            [ 0.1 seconds ]            
+[build 0.4 s] [3/11 complete] [4/64 jobs] [2 queued] [swot_slam:loadenv - 0... Finished <<< azure_kinect_ros_driver                [ 0.2 seconds ]            
+Finished <<< swot_slam                              [ 0.1 seconds ]            
+[build 0.5 s] [5/11 complete] [2/64 jobs] [0 queued] [darknet_ros_msgs:load... Finished <<< swot_teleop                            [ 0.1 seconds ]            
+[build 0.6 s] [6/11 complete] [1/64 jobs] [0 queued] [darknet_ros_msgs:make... [build 0.7 s] [6/11 complete] [1/64 jobs] [0 queued] [darknet_ros_msgs:make... Finished <<< darknet_ros_msgs                       [ 0.2 seconds ]            
 Starting >>> darknet_ros                                                       
 Starting >>> swot_msgs                                                         
-[build 0.6 s] [6/11 complete] [3/64 jobs] [1 queued] [darknet_ros:loadenv -... Finished <<< swot_slam                              [ 0.1 seconds ]            
-[build 0.7 s] [7/11 complete] [2/64 jobs] [0 queued] [swot_msgs:loadenv - 0... [build 0.8 s] [7/11 complete] [11/64 jobs] [0 queued] [darknet_ros:make (0%... Finished <<< darknet_ros                            [ 0.3 seconds ]            
+[build 0.8 s] [7/11 complete] [2/64 jobs] [1 queued] [darknet_ros:loadenv -... [build 0.9 s] [7/11 complete] [2/64 jobs] [0 queued] [darknet_ros:make (0%)... [build 1.0 s] [7/11 complete] [6/64 jobs] [0 queued] [darknet_ros:make (97%... Finished <<< darknet_ros                            [ 0.3 seconds ]            
 Finished <<< swot_msgs                              [ 0.2 seconds ]            
 Starting >>> swot_pose_controller                                              
-[build 0.9 s] [9/11 complete] [1/64 jobs] [0 queued] [swot_pose_controller:... [build 1.0 s] [9/11 complete] [1/64 jobs] [0 queued] [swot_pose_controller:... Finished <<< swot_pose_controller                   [ 0.2 seconds ]            
+[build 1.1 s] [9/11 complete] [1/64 jobs] [0 queued] [swot_pose_controller:... [build 1.2 s] [9/11 complete] [1/64 jobs] [0 queued] [swot_pose_controller:... Finished <<< swot_pose_controller                   [ 0.2 seconds ]            
 Starting >>> swot_navigation                                                   
-[build 1.1 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:load... [build 1.2 s] [10/11 complete] [48/64 jobs] [0 queued] [swot_navigation:mak... [build 1.3 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.4 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.5 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.6 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.7 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.8 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.9 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.0 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.1 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.2 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.3 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.4 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.5 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.6 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.8 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.9 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.0 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.1 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.2 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.3 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.4 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.5 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.6 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.7 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.8 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.9 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 4.0 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 4.1 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... _______________________________________________________________________________
-Errors << swot_navigation:make /home/irobot/catkin_ws/logs/swot_navigation/build.make.010.log
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:[m[K In lambda function:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:121:124:[m[K [01;31m[Kerror: [m[K‘[01m[KNav_one[m[K’ was not declared in this scope
-  121 |     BT::NodeBuilder builder_1 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<[01;31m[KNav_one[m[K>(name,  std::ref(navigation));};
-      |                                                                                                                            [01;31m[K^~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:121:160:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmake_unique<<expression error> >(const string&, std::reference_wrapper<Navigation>)[m[K’
-  121 |     BT::NodeBuilder builder_1 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_one>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:856:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...)[m[K’
-  856 |     [01;36m[Kmake_unique[m[K(_Args&&... __args)
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:856:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:121:160:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  121 |     BT::NodeBuilder builder_1 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_one>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:862:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> typename std::_MakeUniq<_Tp>::__array std::make_unique(std::size_t)[m[K’
-  862 |     [01;36m[Kmake_unique[m[K(size_t __num)
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:862:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:121:160:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  121 |     BT::NodeBuilder builder_1 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_one>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:868:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> typename std::_MakeUniq<_Tp>::__invalid_type std::make_unique(_Args&& ...)[m[K’ <deleted>
-  868 |     [01;36m[Kmake_unique[m[K(_Args&&...) = delete;
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:868:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:121:160:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  121 |     BT::NodeBuilder builder_1 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_one>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:[m[K In member function ‘[01m[Kvoid Navigation::registerNodes(BT::BehaviorTreeFactory&, Navigation&)[m[K’:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:121:162:[m[K [01;31m[Kerror: [m[Kconversion from ‘[01m[KNavigation::registerNodes(BT::BehaviorTreeFactory&, Navigation&)::<lambda(const string&, const NodeConfiguration&)>[m[K’ to non-scalar type ‘[01m[KBT::NodeBuilder[m[K’ {aka ‘[01m[Kstd::function<std::unique_ptr<BT::TreeNode>(const std::__cxx11::basic_string<char>&, const BT::NodeConfig&)>[m[K’} requested
-  121 |     BT::NodeBuilder builder_1 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_one>(name,  std::ref(navigation));[01;31m[K}[m[K;
-      |                                                                                                                                                                  [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:122:29:[m[K [01;31m[Kerror: [m[K‘[01m[KNav_one[m[K’ was not declared in this scope
-  122 |     factory.registerBuilder<[01;31m[KNav_one[m[K>("Nav_one", builder_1);
-      |                             [01;31m[K^~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:122:58:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBT::BehaviorTreeFactory::registerBuilder<<expression error> >(const char [8], BT::NodeBuilder&)[m[K’
-  122 |     factory.registerBuilder<Nav_one>("Nav_one", builder_1[01;31m[K)[m[K;
-      |                                                          [01;31m[K^[m[K
-In file included from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:25[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/home/irobot/catkin_ws/src/BehaviorTree.CPP/include/behaviortree_cpp/bt_factory.h:221:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> void BT::BehaviorTreeFactory::registerBuilder(const string&, const NodeBuilder&)[m[K’
-  221 |   void [01;36m[KregisterBuilder[m[K(const std::string& ID, const NodeBuilder& builder)
-      |        [01;36m[K^~~~~~~~~~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/BehaviorTree.CPP/include/behaviortree_cpp/bt_factory.h:221:8:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:122:58:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  122 |     factory.registerBuilder<Nav_one>("Nav_one", builder_1[01;31m[K)[m[K;
-      |                                                          [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:[m[K In lambda function:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:124:124:[m[K [01;31m[Kerror: [m[K‘[01m[KNav_two[m[K’ was not declared in this scope
-  124 |     BT::NodeBuilder builder_2 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<[01;31m[KNav_two[m[K>(name, std::ref(navigation));};
-      |                                                                                                                            [01;31m[K^~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:124:159:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmake_unique<<expression error> >(const string&, std::reference_wrapper<Navigation>)[m[K’
-  124 |     BT::NodeBuilder builder_2 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_two>(name, std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                               [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:856:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...)[m[K’
-  856 |     [01;36m[Kmake_unique[m[K(_Args&&... __args)
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:856:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:124:159:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  124 |     BT::NodeBuilder builder_2 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_two>(name, std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                               [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:862:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> typename std::_MakeUniq<_Tp>::__array std::make_unique(std::size_t)[m[K’
-  862 |     [01;36m[Kmake_unique[m[K(size_t __num)
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:862:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:124:159:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  124 |     BT::NodeBuilder builder_2 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_two>(name, std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                               [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:868:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> typename std::_MakeUniq<_Tp>::__invalid_type std::make_unique(_Args&& ...)[m[K’ <deleted>
-  868 |     [01;36m[Kmake_unique[m[K(_Args&&...) = delete;
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:868:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:124:159:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  124 |     BT::NodeBuilder builder_2 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_two>(name, std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                               [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:[m[K In member function ‘[01m[Kvoid Navigation::registerNodes(BT::BehaviorTreeFactory&, Navigation&)[m[K’:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:124:161:[m[K [01;31m[Kerror: [m[Kconversion from ‘[01m[KNavigation::registerNodes(BT::BehaviorTreeFactory&, Navigation&)::<lambda(const string&, const NodeConfiguration&)>[m[K’ to non-scalar type ‘[01m[KBT::NodeBuilder[m[K’ {aka ‘[01m[Kstd::function<std::unique_ptr<BT::TreeNode>(const std::__cxx11::basic_string<char>&, const BT::NodeConfig&)>[m[K’} requested
-  124 |     BT::NodeBuilder builder_2 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_two>(name, std::ref(navigation));[01;31m[K}[m[K;
-      |                                                                                                                                                                 [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:125:29:[m[K [01;31m[Kerror: [m[K‘[01m[KNav_two[m[K’ was not declared in this scope
-  125 |     factory.registerBuilder<[01;31m[KNav_two[m[K>("Nav_two", builder_2);
-      |                             [01;31m[K^~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:125:58:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBT::BehaviorTreeFactory::registerBuilder<<expression error> >(const char [8], BT::NodeBuilder&)[m[K’
-  125 |     factory.registerBuilder<Nav_two>("Nav_two", builder_2[01;31m[K)[m[K;
-      |                                                          [01;31m[K^[m[K
-In file included from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:25[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/home/irobot/catkin_ws/src/BehaviorTree.CPP/include/behaviortree_cpp/bt_factory.h:221:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> void BT::BehaviorTreeFactory::registerBuilder(const string&, const NodeBuilder&)[m[K’
-  221 |   void [01;36m[KregisterBuilder[m[K(const std::string& ID, const NodeBuilder& builder)
-      |        [01;36m[K^~~~~~~~~~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/BehaviorTree.CPP/include/behaviortree_cpp/bt_factory.h:221:8:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:125:58:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  125 |     factory.registerBuilder<Nav_two>("Nav_two", builder_2[01;31m[K)[m[K;
-      |                                                          [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:[m[K In lambda function:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:127:124:[m[K [01;31m[Kerror: [m[K‘[01m[KNav_three[m[K’ was not declared in this scope
-  127 |     BT::NodeBuilder builder_3 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<[01;31m[KNav_three[m[K>(name,  std::ref(navigation));};
-      |                                                                                                                            [01;31m[K^~~~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:127:162:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmake_unique<<expression error> >(const string&, std::reference_wrapper<Navigation>)[m[K’
-  127 |     BT::NodeBuilder builder_3 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_three>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                  [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:856:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...)[m[K’
-  856 |     [01;36m[Kmake_unique[m[K(_Args&&... __args)
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:856:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:127:162:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  127 |     BT::NodeBuilder builder_3 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_three>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                  [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:862:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> typename std::_MakeUniq<_Tp>::__array std::make_unique(std::size_t)[m[K’
-  862 |     [01;36m[Kmake_unique[m[K(size_t __num)
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:862:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:127:162:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  127 |     BT::NodeBuilder builder_3 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_three>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                  [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:868:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> typename std::_MakeUniq<_Tp>::__invalid_type std::make_unique(_Args&& ...)[m[K’ <deleted>
-  868 |     [01;36m[Kmake_unique[m[K(_Args&&...) = delete;
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:868:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:127:162:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  127 |     BT::NodeBuilder builder_3 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_three>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                  [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:[m[K In member function ‘[01m[Kvoid Navigation::registerNodes(BT::BehaviorTreeFactory&, Navigation&)[m[K’:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:127:164:[m[K [01;31m[Kerror: [m[Kconversion from ‘[01m[KNavigation::registerNodes(BT::BehaviorTreeFactory&, Navigation&)::<lambda(const string&, const NodeConfiguration&)>[m[K’ to non-scalar type ‘[01m[KBT::NodeBuilder[m[K’ {aka ‘[01m[Kstd::function<std::unique_ptr<BT::TreeNode>(const std::__cxx11::basic_string<char>&, const BT::NodeConfig&)>[m[K’} requested
-  127 |     BT::NodeBuilder builder_3 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_three>(name,  std::ref(navigation));[01;31m[K}[m[K;
-      |                                                                                                                                                                    [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:128:29:[m[K [01;31m[Kerror: [m[K‘[01m[KNav_three[m[K’ was not declared in this scope
-  128 |     factory.registerBuilder<[01;31m[KNav_three[m[K>("Nav_three", builder_3);
-      |                             [01;31m[K^~~~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:128:62:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBT::BehaviorTreeFactory::registerBuilder<<expression error> >(const char [10], BT::NodeBuilder&)[m[K’
-  128 |     factory.registerBuilder<Nav_three>("Nav_three", builder_3[01;31m[K)[m[K;
-      |                                                              [01;31m[K^[m[K
-In file included from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:25[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/home/irobot/catkin_ws/src/BehaviorTree.CPP/include/behaviortree_cpp/bt_factory.h:221:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> void BT::BehaviorTreeFactory::registerBuilder(const string&, const NodeBuilder&)[m[K’
-  221 |   void [01;36m[KregisterBuilder[m[K(const std::string& ID, const NodeBuilder& builder)
-      |        [01;36m[K^~~~~~~~~~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/BehaviorTree.CPP/include/behaviortree_cpp/bt_factory.h:221:8:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:128:62:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  128 |     factory.registerBuilder<Nav_three>("Nav_three", builder_3[01;31m[K)[m[K;
-      |                                                              [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:[m[K In lambda function:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:130:124:[m[K [01;31m[Kerror: [m[K‘[01m[KNav_four[m[K’ was not declared in this scope
-  130 |     BT::NodeBuilder builder_4 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<[01;31m[KNav_four[m[K>(name,  std::ref(navigation));};
-      |                                                                                                                            [01;31m[K^~~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:130:161:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[Kmake_unique<<expression error> >(const string&, std::reference_wrapper<Navigation>)[m[K’
-  130 |     BT::NodeBuilder builder_4 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_four>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                 [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:856:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> typename std::_MakeUniq<_Tp>::__single_object std::make_unique(_Args&& ...)[m[K’
-  856 |     [01;36m[Kmake_unique[m[K(_Args&&... __args)
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:856:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:130:161:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  130 |     BT::NodeBuilder builder_4 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_four>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                 [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:862:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp> typename std::_MakeUniq<_Tp>::__array std::make_unique(std::size_t)[m[K’
-  862 |     [01;36m[Kmake_unique[m[K(size_t __num)
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:862:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:130:161:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  130 |     BT::NodeBuilder builder_4 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_four>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                 [01;31m[K^[m[K
-In file included from [01m[K/usr/include/c++/9/bits/locale_conv.h:41[m[K,
-                 from [01m[K/usr/include/c++/9/locale:43[m[K,
-                 from [01m[K/usr/include/c++/9/iomanip:43[m[K,
-                 from [01m[K/usr/include/boost/math/policies/error_handling.hpp:12[m[K,
-                 from [01m[K/usr/include/boost/math/special_functions/round.hpp:14[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/time.h:58[m[K,
-                 from [01m[K/opt/ros/noetic/include/ros/ros.h:38[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:10[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:868:5:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class _Tp, class ... _Args> typename std::_MakeUniq<_Tp>::__invalid_type std::make_unique(_Args&& ...)[m[K’ <deleted>
-  868 |     [01;36m[Kmake_unique[m[K(_Args&&...) = delete;
-      |     [01;36m[K^~~~~~~~~~~[m[K
-[01m[K/usr/include/c++/9/bits/unique_ptr.h:868:5:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:130:161:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  130 |     BT::NodeBuilder builder_4 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_four>(name,  std::ref(navigation)[01;31m[K)[m[K;};
-      |                                                                                                                                                                 [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:[m[K In member function ‘[01m[Kvoid Navigation::registerNodes(BT::BehaviorTreeFactory&, Navigation&)[m[K’:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:130:163:[m[K [01;31m[Kerror: [m[Kconversion from ‘[01m[KNavigation::registerNodes(BT::BehaviorTreeFactory&, Navigation&)::<lambda(const string&, const NodeConfiguration&)>[m[K’ to non-scalar type ‘[01m[KBT::NodeBuilder[m[K’ {aka ‘[01m[Kstd::function<std::unique_ptr<BT::TreeNode>(const std::__cxx11::basic_string<char>&, const BT::NodeConfig&)>[m[K’} requested
-  130 |     BT::NodeBuilder builder_4 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_four>(name,  std::ref(navigation));[01;31m[K}[m[K;
-      |                                                                                                                                                                   [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:131:29:[m[K [01;31m[Kerror: [m[K‘[01m[KNav_four[m[K’ was not declared in this scope
-  131 |     factory.registerBuilder<[01;31m[KNav_four[m[K>("Nav_four", builder_4);
-      |                             [01;31m[K^~~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:131:60:[m[K [01;31m[Kerror: [m[Kno matching function for call to ‘[01m[KBT::BehaviorTreeFactory::registerBuilder<<expression error> >(const char [9], BT::NodeBuilder&)[m[K’
-  131 |     factory.registerBuilder<Nav_four>("Nav_four", builder_4[01;31m[K)[m[K;
-      |                                                            [01;31m[K^[m[K
-In file included from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/include/swot_navigation/swot_robocup_navigation.h:25[m[K,
-                 from [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:8[m[K:
-[01m[K/home/irobot/catkin_ws/src/BehaviorTree.CPP/include/behaviortree_cpp/bt_factory.h:221:8:[m[K [01;36m[Knote: [m[Kcandidate: ‘[01m[Ktemplate<class T> void BT::BehaviorTreeFactory::registerBuilder(const string&, const NodeBuilder&)[m[K’
-  221 |   void [01;36m[KregisterBuilder[m[K(const std::string& ID, const NodeBuilder& builder)
-      |        [01;36m[K^~~~~~~~~~~~~~~[m[K
-[01m[K/home/irobot/catkin_ws/src/BehaviorTree.CPP/include/behaviortree_cpp/bt_factory.h:221:8:[m[K [01;36m[Knote: [m[K  template argument deduction/substitution failed:
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:131:60:[m[K [01;31m[Kerror: [m[Ktemplate argument 1 is invalid
-  131 |     factory.registerBuilder<Nav_four>("Nav_four", builder_4[01;31m[K)[m[K;
-      |                                                            [01;31m[K^[m[K
-[01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:[m[K At global scope:
+[build 1.3 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:chec... [build 1.4 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.5 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.6 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.7 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.8 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 1.9 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.0 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.1 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.2 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.3 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.4 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.5 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.6 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.7 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.8 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 2.9 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.0 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.1 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.2 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.3 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.4 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.5 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.6 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.7 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.8 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 3.9 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 4.0 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... [build 4.1 s] [10/11 complete] [1/64 jobs] [0 queued] [swot_navigation:make... _______________________________________________________________________________
+Errors << swot_navigation:make /home/irobot/catkin_ws/logs/swot_navigation/build.make.012.log
 [01m[K/home/irobot/catkin_ws/src/swot/swot_navigation/src/swot_robocup_navigation.cpp:168:6:[m[K [01;31m[Kerror: [m[Kno declaration matches ‘[01m[Kvoid Navigation::control_Posecontroller(const string&, bool)[m[K’
   168 | void [01;31m[KNavigation[m[K::control_Posecontroller(const std::string& workspace, bool pushback)
       |      [01;31m[K^~~~~~~~~~[m[K
@@ -508,4 +211,4 @@ Failed <<< swot_navigation                        [ 3.0 seconds ]
 [build] Warnings: None.                                                        
 [build] Abandoned: No packages were abandoned.                                 
 [build] Failed: 1 packages failed.                                             
-[build] Runtime: 4.1 seconds total.                                            
+[build] Runtime: 4.3 seconds total.                                            
