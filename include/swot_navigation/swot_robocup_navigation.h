@@ -5,6 +5,8 @@
 *       @author Joel Santos
 */
 
+#pragma once 
+
 #include "ros/ros.h"
 #include "move_base_msgs/MoveBaseAction.h"
 #include "move_base_msgs/MoveBaseActionResult.h"
@@ -53,14 +55,12 @@ class Navigation{
         std::string csv_file_path;
         std::vector<std::vector<std::string>> content;
         std::vector<std::vector<float>> pos;
-        int ID_CSV;                                 //index to Navigate through the lines of the CSV file
         float time_to_navigate;                     //max time the client waits for a result 60 for slow, 45 for fast
 
         swot_msgs::SwotNavigation::Request request_;
         swot_msgs::SwotNavigation::Response response_;
         bool tree_status;
         NavigationState navState;
-        bool global_print_debug;
 
     public:
 
@@ -124,7 +124,6 @@ class Navigation{
         bool get_tree_status();
         float get_time_to_navigate();
         NavigationState get_navState();
-        bool get_global_print_debug();
 
         // Reset the navigation state
         void resetNavigationState();
@@ -132,6 +131,12 @@ class Navigation{
         // Tick function for handling the navigation result
         BT::NodeStatus tickHandleNavigationResult();
 
-        // Tick function for handling the navigation result from Recovery Pose
-        BT::NodeStatus tickHandleNavigationResultFromRecovery();
+        // Tick function for handling the navigation result two
+        BT::NodeStatus tickHandleNavigationTwo();
+
+        // Tick function for handling the navigation result three
+        BT::NodeStatus tickHandleNavigationThree();
+        
+        // Tick function for handling the navigation result Four
+        BT::NodeStatus tickHandleNavigationFour();
 };

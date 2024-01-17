@@ -15,7 +15,6 @@ Navigation::Navigation() : ac("move_base", true)
     Current_WS = "FINISHED";
     CSV_RECOVERY = false;
     CSV_FINISHED = false;
-    ID_CSV = 0;
     time_to_navigate = 45;
     navState = NavigationState::DRIVE_TO_FINISHED;
 
@@ -56,10 +55,6 @@ void Navigation::waitForMoveBase()
 void Navigation::readCSVFile() 
 {
     csv_file_path = ros::package::getPath("swot_navigation") + "/src/WS_Positions.csv";
-    if (global_print_debug)
-    {
-        ROS_INFO_STREAM("Filepath: " << csv_file_path);
-    }
 
     std::vector<std::string> row;
     std::string line, word;
@@ -67,10 +62,6 @@ void Navigation::readCSVFile()
 
     if (!file.is_open()) 
     {
-        if (global_print_debug) 
-        {
-            ROS_ERROR("Could not open CSV File!!!");
-        }
         ros::shutdown();
     }
 
@@ -115,25 +106,20 @@ void Navigation::checkCSVFlags()
 
     if (!CSV_RECOVERY || !CSV_FINISHED) 
     {
-        if (global_print_debug) 
-        {
-            ROS_ERROR("Fehlerhafte CSV");
-        }
         ros::shutdown();
     }
 }
 
 void Navigation::printStatus() 
 {
-    if (global_print_debug) 
-    {
-        ROS_INFO("Navigation ready for Competition!!!");
-    }
+
+    ROS_INFO("Navigation ready for Competition!!!");
+    
 }
 
 
 //This is the function that gets called everytime the service is called
-bool Navigation::callback_service_navigation(swot_msgs::SwotNavigation::Request  &ws_message, swot_msgs::SwotNavigation::Response &res)
+bool Navigation::callback_service_navigation(swot_msgs::SwotNavigation::Request& ws_message, swot_msgs::SwotNavigation::Response& res)
 {
     this->request_ = ws_message;
     this->response_ = res;
@@ -145,26 +131,22 @@ bool Navigation::callback_service_navigation(swot_msgs::SwotNavigation::Request 
     nh_.param<std::string>("file", xml_file, xml_file_path);
     auto tree = factory.createTreeFromFile(xml_file);
     tree.tickOnce();
-    std::cout << get_tree_status() << std::endl;
     return true;
 }
 
 void Navigation::registerNodes(BT::BehaviorTreeFactory& factory, Navigation& navigation)
 {
-    BT::NodeBuilder builder_1 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<CheckObjRequired>(name,  std::ref(navigation));};
-    factory.registerBuilder<CheckObjRequired>("CheckObjRequired", builder_1);
+    BT::NodeBuilder builder_1 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_one>(name,  std::ref(navigation));};
+    factory.registerBuilder<Nav_one>("Nav_one", builder_1);
 
-    BT::NodeBuilder builder_2 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<CheckWSFree>(name, std::ref(navigation));};
-    factory.registerBuilder<CheckWSFree>("CheckWSFree", builder_2);
+    BT::NodeBuilder builder_2 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_two>(name, std::ref(navigation));};
+    factory.registerBuilder<Nav_two>("Nav_two", builder_2);
 
-    BT::NodeBuilder builder_3 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<DropObjectInTray>(name,  std::ref(navigation));};
-    factory.registerBuilder<DropObjectInTray>("DropObjectInTray", builder_3);
+    BT::NodeBuilder builder_3 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_three>(name,  std::ref(navigation));};
+    factory.registerBuilder<Nav_three>("Nav_three", builder_3);
 
-    BT::NodeBuilder builder_4 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<GetGraspAndMoveGrasp>(name,  std::ref(navigation));};
-    factory.registerBuilder<GetGraspAndMoveGrasp>("GetGraspAndMoveGrasp", builder_4);
-
-    BT::NodeBuilder builder_5 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<MoveHomePos>(name,  std::ref(navigation));};
-    factory.registerBuilder<MoveHomePos>("MoveHomePos", builder_5);
+    BT::NodeBuilder builder_4 = [&](const std::string& name, const BT::NodeConfiguration& config) {return std::make_unique<Nav_four>(name,  std::ref(navigation));};
+    factory.registerBuilder<Nav_four>("Nav_four", builder_4);
 }
 
 //This function sends navigation goals
@@ -185,38 +167,61 @@ void Navigation::send_nav_goal(int CSV_Line)
 }
 
 //This function handles the driving to multiple Controllerpositions and the Pushbacks
-void Navigation::control_Posecontroller(const std::string& workspace, bool pushback) {
-    if (workspace == "RECOVERY" || workspace == "FINISHED") {
-        if (global_print_debug) {
-            ROS_INFO_STREAM("No Controller Goal for Driving to " << workspace << "!");
-        }
+void Navigation::control_Posecontroller(const std::string& workspace, bool pushback) 
+{
+    if (workspace == "RECOVERY" || workspace == "FINISHED") 
+    {
+        ROS_INFO_STREAM("No Controller Goal for Driving to " << workspace << "!");
         return;
     }
 
-    int number_of_controller_positions = std::count_if(content.begin() + 1, content.end(), 
-        &workspace { return row[0].find(workspace + "_controller") != std::string::npos; });
-
-    if (global_print_debug) {
-        ROS_INFO_STREAM("Number of controller Positions: " << number_of_controller_positions);
+    int number_of_controller_positions = 0;
+    for(int i = 1; i<content.size();i++)
+    {
+        if(content[i][0].find(workspace + "_controller") != std::string::npos)
+        {
+            number_of_controller_positions++;
+        }
     }
-
-    if (!pushback || number_of_controller_positions == 1) {
-        send_controller_goal(search_line_in_csv(workspace));
-    } else {
-        for (int j = number_of_controller_positions; j > 0; --j) {
-            std::string string_to_send = workspace + "_controller" + std::to_string(j);
+    if(pushback == false)
+    {
+        for(int j = 1; j <= number_of_controller_positions; j++)
+        {
+            std::string string_to_send = "nan";
+            string_to_send = workspace + "_controller" + std::to_string(j);
             send_controller_goal(search_line_in_csv(string_to_send));
         }
     }
+    else{
+            if(number_of_controller_positions == 1)
+            {
+                send_controller_goal(search_line_in_csv(workspace));
+            }
+            else{
+                    for (int j = number_of_controller_positions - 1; j >= 0; j--)
+                    {
+                        if(j!=0)
+                        {
+                            std::string string_to_send = "nan";
+                            string_to_send = workspace + "_controller" + std::to_string(j);
+                            send_controller_goal(search_line_in_csv(string_to_send));
+                        }
+                        else
+                        {
+                            std::string string_to_send = "nan";
+                            string_to_send = workspace;
+                            send_controller_goal(search_line_in_csv(workspace));
+                        }
+                    }
+                }
+        }
 }
 
 //This function sends controller goals
 void Navigation::send_controller_goal(int CSV_Line)
 {
-     if(global_print_debug == true)
-     {
-        ROS_INFO_STREAM("Robot is driving with Pose Controller to " << content[CSV_Line+1][0]);
-    }
+    ROS_INFO_STREAM("Robot is driving with Pose Controller to " << content[CSV_Line+1][0]);
+
     swot_msgs::SwotPoseController srv;
     srv.request.controllerGoal.position.x = pos[CSV_Line][0];
     srv.request.controllerGoal.position.y = pos[CSV_Line][1];
@@ -229,10 +234,7 @@ void Navigation::send_controller_goal(int CSV_Line)
     {
         if(!srv.response.status.compare("FINISHED"))
         {
-            if(global_print_debug == true)
-            {
-                ROS_INFO(" ");
-            }
+
         }
     }
 }
@@ -244,7 +246,7 @@ int Navigation::search_line_in_csv(std::string workspace)
     {
         if(content[i][0].compare(workspace) == 0)
         {
-                    return i-1;
+            return i-1;
         }
     }
     ROS_INFO("No Line Found in CSV!");
@@ -253,7 +255,7 @@ int Navigation::search_line_in_csv(std::string workspace)
 
 
 //This function makes a plan
-void Navigation::makePlan(bool setZero=false, std::string ws_goal="FINISHED")
+void Navigation::makePlan(bool setZero, std::string ws_goal)
 {
     return;
 }
@@ -261,7 +263,7 @@ void Navigation::makePlan(bool setZero=false, std::string ws_goal="FINISHED")
 //set functions
 void Navigation::set_response(std::string response)
 {
-    this->response_.destination = response;
+    this->response_.status = response;
 }
 
 void Navigation::set_executing(bool exec)
@@ -359,75 +361,402 @@ void Navigation::resetNavigationState()
 // Tick function for handling the navigation result
 BT::NodeStatus Navigation::tickHandleNavigationResult()
 {
-    if (navState == NavigationState::HANDLE_NAV_RESULT) 
+    if (ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) 
     {
-        if (ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) 
+        response_.status = "FINISHED";
+        near_by_WS = false;
+        Current_WS = "FINISHED";
+        return BT::NodeStatus::SUCCESS;
+    } 
+    else if (ac.getState() == actionlib::SimpleClientGoalState::ABORTED) 
+    {
+        send_nav_goal(search_line_in_csv("RECOVERY"));
+        if (!ac.waitForResult(ros::Duration(time_to_navigate))) 
         {
-            res.status = "FINISHED";
-            near_by_WS = false;
-            Current_WS = "FINISHED";
-            resetNavigationState();  // Reset state for the next execution
-            return BehaviorStatus::Success;
+            ac.cancelGoal();
+            response_.status = "FAILED";
+            return BT::NodeStatus::SUCCESS;
         } 
-        else if (ac.getState() == actionlib::SimpleClientGoalState::ABORTED) 
+        else 
         {
-            send_nav_goal(search_line_in_csv("RECOVERY"));
-            if (!ac.waitForResult(ros::Duration(time_to_navigate))) 
+            if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
             {
-                ac.cancelGoal();
-                res.status = "FAILED";
-                resetNavigationState();  // Reset state for the next execution
-                return BehaviorStatus::Failure;
-            } 
-            else 
-            {
-                // Robot reached the Recovery Pose successfully
-                if (global_print_debug) 
-                {
-                    ROS_INFO("Robot reached the Recovery Pose!");
-                    ROS_INFO("Sending the NAV GOAL to the Finished Pose again!");
-                }
                 send_nav_goal(search_line_in_csv("FINISHED"));
                 if (!ac.waitForResult(ros::Duration(time_to_navigate))) 
                 {
                     ac.cancelGoal();
-                    res.status = "FAILED";
-                    resetNavigationState();  // Reset state for the next execution
-                    return BehaviorStatus::Failure;
+                    response_.status = "FAILED";
+                    return BT::NodeStatus::SUCCESS;
                 } 
                 else 
                 {
-                    // Navigation to FINISHED Pose from Recovery Pose succeeded or failed for some other reason
-                    navState = NavigationState::HANDLE_NAV_RESULT_FROM_RECOVERY;
-                    return BehaviorStatus::Running;
+                    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                    {
+                        response_.status = "FINISHED";
+                        near_by_WS = false;
+                        Current_WS = "FINISHED";
+                        return BT::NodeStatus::SUCCESS;
+                    }
+                    if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                    {
+                        ac.cancelGoal();
+                        response_.status = "FAILED";
+                        return BT::NodeStatus::SUCCESS;
+                    }
+                }
+            }
+            else if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+            {
+                ac.cancelGoal();
+                response_.status = "FAILED";
+                return BT::NodeStatus::SUCCESS;
+            }
+        }
+    }
+    return BT::NodeStatus::FAILURE;
+}
+
+// Tick function for handling the navigation result from Recovery Pose
+BT::NodeStatus Navigation::tickHandleNavigationTwo()
+{
+    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+    {
+        response_.status = "FINISHED";
+        near_by_WS = false;
+        Current_WS = "FINISHED";
+        return BT::NodeStatus::SUCCESS;
+    }
+    if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+    {
+        send_nav_goal(search_line_in_csv("FINISHED"));
+        if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+        {
+            send_nav_goal(search_line_in_csv("RECOVERY"));
+            if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+            {
+                ac.cancelGoal();
+                response_.status = "FAILED";
+                return BT::NodeStatus::SUCCESS;
+            }
+            else
+            {
+                if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                {
+                    send_nav_goal(search_line_in_csv("FINISHED"));
+                    if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+                    {    
+                        ac.cancelGoal();
+                        response_.status = "FAILED";
+                        return BT::NodeStatus::SUCCESS;
+                    }
+                    else
+                    {
+                        if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                        {    
+                            ac.cancelGoal();
+                            response_.status = "FAILED";
+                            return BT::NodeStatus::SUCCESS;
+                        }
+                        if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                        {    
+                            response_.status = "FINISHED";
+                            near_by_WS = false;
+                            Current_WS = "FINISHED";
+                            return BT::NodeStatus::SUCCESS;
+                        }
+                    }
+                }
+                if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                {    
+                    ac.cancelGoal();
+                    response_.status = "FAILED";
+                    return BT::NodeStatus::SUCCESS;
+                }
+            }
+            if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+            {    
+                ac.cancelGoal();
+                response_.status = "FAILED";
+                return BT::NodeStatus::SUCCESS;
+            }
+
+        }
+        else
+        {
+            if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+            {    
+                response_.status = "FINISHED";
+                near_by_WS = false;
+                Current_WS = "FINISHED";
+                return BT::NodeStatus::SUCCESS;
+            }
+            if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+            {    
+                send_nav_goal(search_line_in_csv("RECOVERY"));
+                if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+                {    
+                    ac.cancelGoal();
+                    response_.status = "FAILED";
+                    return BT::NodeStatus::SUCCESS;
+                }
+                else
+                {
+                    if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                    {    
+                        ac.cancelGoal();
+                        response_.status = "FAILED";
+                        return BT::NodeStatus::SUCCESS;
+                    }
+                    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                    {
+                        
+                        send_nav_goal(search_line_in_csv("FINISHED"));
+                        if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+                        {
+                            
+                            ac.cancelGoal();
+                            response_.status = "FAILED";
+                            return BT::NodeStatus::SUCCESS;
+                        }
+                        else
+                        {
+                            if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                            {
+                                ac.cancelGoal();
+                                response_.status = "FAILED";
+                                return BT::NodeStatus::SUCCESS;
+                            }
+                            if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                            {    
+                                response_.status = "FINISHED";
+                                near_by_WS = false;
+                                Current_WS = "FINISHED";
+                                return BT::NodeStatus::SUCCESS;
+                            }
+                        }
+                    }
                 }
             }
         }
     }
-
-    return BehaviorStatus::Success;
+    return BT::NodeStatus::FAILURE;
 }
 
-// Tick function for handling the navigation result from Recovery Pose
-BT::NodeStatus Navigation::tickHandleNavigationResultFromRecovery()
+// Tick function for handling the navigation result three
+BT::NodeStatus Navigation::tickHandleNavigationThree()
 {
-    if (navState == NavigationState::HANDLE_NAV_RESULT_FROM_RECOVERY) 
+    send_nav_goal(search_line_in_csv(get_request().destination));
+    if(!ac.waitForResult(ros::Duration(time_to_navigate)))
     {
-        if (ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED) 
-        {
-            res.status = "FINISHED";
-            near_by_WS = false;
-            Current_WS = "FINISHED";
-            resetNavigationState();  // Reset state for the next execution
-            return BehaviorStatus::Success;
+        near_by_WS = false;
+        Current_WS = "nan";
+        ac.cancelGoal();
+        response_.status = "FAILED";
+        return BT::NodeStatus::SUCCESS;
+    }
+    else
+    {
+        if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+        {    
+            controll_Posecontroller(get_request().destination, false);
+            near_by_WS = true;
+            Current_WS = get_request().destination;
+            response_.status = "FINISHED";
+            return BT::NodeStatus::SUCCESS;
         }
-        else if (ac.getState() == actionlib::SimpleClientGoalState::ABORTED) 
+        if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
         {
-            ac.cancelGoal();
-            res.status = "FAILED";
-            resetNavigationState();  // Reset state for the next execution
-            return BehaviorStatus::Failure;
+            send_nav_goal(search_line_in_csv("RECOVERY")); 
+            if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+            {    
+                ac.cancelGoal();
+                response_.status = "FAILED";
+                near_by_WS = false;
+                Current_WS = "nan";
+                return BT::NodeStatus::SUCCESS;
+            }
+            else
+            {
+                if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                {   
+                    send_nav_goal(search_line_in_csv(get_request().destination)); 
+                    if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+                    {    
+                        ac.cancelGoal();
+                        response_.status = "FAILED";
+                        near_by_WS = false;
+                        Current_WS = "nan";   
+                        return BT::NodeStatus::SUCCESS;
+                    }
+                    else 
+                    {
+                        if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                        {    
+                            controll_Posecontroller(get_request().destination, false);
+                            near_by_WS = true; 
+                            Current_WS = get_request().destination;
+                            response_.status = "FINISHED";
+                            return BT::NodeStatus::SUCCESS;
+                        }
+                        if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                        {    
+                            ac.cancelGoal();
+                            response_.status = "FAILED";
+                            near_by_WS = false;
+                            Current_WS = "nan";   
+                            return BT::NodeStatus::SUCCESS;
+                        }
+                    }
+                }
+                if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                {    
+                    ac.cancelGoal();
+                    response_.status = "FAILED";
+                    near_by_WS = false;
+                    Current_WS = "nan";
+                    return BT::NodeStatus::SUCCESS;
+                }
+            }
+        }
+    } 
+    return BT::NodeStatus::FAILURE;
+}
+
+// Tick function for handling the navigation result Four
+BT::NodeStatus Navigation::tickHandleNavigationFour()
+{
+    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+    {             
+        controll_Posecontroller(get_request().destination, false);
+        near_by_WS = true;
+        Current_WS = get_request().destination;
+        response_.status = "FINISHED";
+        return BT::NodeStatus::SUCCESS;
+    }
+    if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+    {
+        send_nav_goal(search_line_in_csv(get_request().destination));
+        if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+        {
+            send_nav_goal(search_line_in_csv("RECOVERY"));
+            if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+            {
+                near_by_WS = false;
+                Current_WS = "nan";
+                ac.cancelGoal();
+                response_.status = "FAILED";
+                return BT::NodeStatus::SUCCESS;
+            }
+            else
+            {
+                if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                {    
+                    near_by_WS = false;
+                    Current_WS = "nan";
+                    ac.cancelGoal();
+                    response_.status = "FAILED";
+                    return BT::NodeStatus::SUCCESS;
+                }
+                if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                {
+                    send_nav_goal(search_line_in_csv(get_request().destination));
+                    if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+                    {    
+                        ac.cancelGoal();
+                        near_by_WS = false;
+                        Current_WS = "nan";   
+                        response_.status = "FAILED";
+                        return BT::NodeStatus::SUCCESS;
+                    }
+                    else
+                    {
+                        if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                        {    
+                            ac.cancelGoal();
+                            near_by_WS = false;
+                            Current_WS = "nan";   
+                            response_.status = "FAILED";
+                            return BT::NodeStatus::SUCCESS;
+                        }
+                        if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                        {    
+                            controll_Posecontroller(get_request().destination, false);
+                            near_by_WS = true;
+                            Current_WS = get_request().destination;
+                            response_.status = "FINISHED";
+                            return BT::NodeStatus::SUCCESS;
+                        }
+
+                    }
+
+                }
+            }
+        }
+        else
+        {
+            if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+            {   
+                controll_Posecontroller(get_request().destination, false);
+                near_by_WS = true;
+                Current_WS = get_request().destination;
+                response_.status = "FINISHED";
+                return BT::NodeStatus::SUCCESS;
+            }
+            if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+            {    
+                send_nav_goal(search_line_in_csv("RECOVERY"));
+                if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+                {    
+                    ac.cancelGoal();
+                    near_by_WS = false;
+                    Current_WS = "nan";
+                    res.status = "FAILED";
+                    return BT::NodeStatus::SUCCESS;
+                }
+                else
+                {
+                    if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                    {    
+                        ac.cancelGoal();
+                        near_by_WS = false;
+                        Current_WS = "nan";
+                        response_.status = "FAILED";
+                        return BT::NodeStatus::SUCCESS;
+                    }
+                    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                    {    
+                        send_nav_goal(search_line_in_csv(get_request().destination));
+                        if(!ac.waitForResult(ros::Duration(time_to_navigate)))
+                        {    
+                            ac.cancelGoal();
+                            near_by_WS = false;
+                            Current_WS = "nan";
+                            response_.status = "FAILED";
+                            return BT::NodeStatus::SUCCESS;
+                        }
+                        else
+                        {
+                            if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
+                            {    
+                                ac.cancelGoal();
+                                near_by_WS = false;
+                                Current_WS = "nan";   
+                                response_.status = "FAILED";
+                                return BT::NodeStatus::SUCCESS;
+                            }
+                            if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+                            {    
+                                controll_Posecontroller(get_request().destination, false);
+                                near_by_WS = true;
+                                Current_WS = get_request().destination;
+                                response_.status = "FINISHED";
+                                return BT::NodeStatus::SUCCESS;
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
-    return BehaviorStatus::Success;
+    return BT::NodeStatus::FAILURE;
 }

@@ -11,7 +11,7 @@
 
 /**
  *      @class Nav_one
- *      @brief Action node for first navigation part.
+ *      @brief Action node for the first navigation part.
  *      @details This action node is responsible for initial checkings before starting the navigation.
  */
 
@@ -29,7 +29,7 @@ class Nav_one : public BT::SyncActionNode
 
 /**
  *      @class Nav_two
- *      @brief Action node for second navigation part.
+ *      @brief Action node for the second navigation part.
  *      @details This action node is responsible for initial checkings before starting the navigation.
  */
 
@@ -46,7 +46,7 @@ class Nav_two : public BT::SyncActionNode
 
 /**
  *      @class Nav_three
- *      @brief Action node for three navigation part.
+ *      @brief Action node for the third navigation part.
  *      @details This action node is responsible for initial checkings before starting the navigation.
  */
 

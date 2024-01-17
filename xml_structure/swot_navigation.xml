@@ -1,12 +1,12 @@
 <root BTCPP_format="4">
 
     <BehaviorTree ID="MainTree">
-            <Sequence name="tree">
+            <Fallback name="tree">
                 <Action ID="Nav_one"/>
                 <Action ID="Nav_two"/>
                 <Action ID="Nav_three"/>
                 <Action ID="Nav_four"/>
-            </Sequence>
+            </Fallback>
     </BehaviorTree>
     
     <TreeNodesModel>

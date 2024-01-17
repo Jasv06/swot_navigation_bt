@@ -8,13 +8,13 @@
 #include "swot_navigation/navigation_tree.h"
 
 
-**
+/**
  *      @brief Constructor of the Nav_one class used to initialize the corresponding member variables.
  *      @param name The behavior tree node name.
  *      @param navigation The Navigation class object to access the neccesary data.
  */
 
-Nav_one::Nav_one(const std::string& name, Navigation& navigation) : BT::SyncActionNode(name, {}), navigation_(navigation) 
+Nav_one::Nav_one(const std::string& name, Navigation& navigation) : BT::SyncActionNode(name, {}), navigation_(navigation), found(false)
 {
 
 }
@@ -33,40 +33,29 @@ Nav_one::~Nav_one() = default;
 BT::NodeStatus Nav_one::tick() 
 {
     std::string GOAL_WS_ID = navigation_.get_request().destination;
-    bool found = std::any_of(navigation_.get_content().begin() + 1, navigation_.get_content().end(), [&GOAL_WS_ID](const auto& row) {return row[0] == GOAL_WS_ID;});
-    
+     //Check if the destinated Goal is contained in the CSV File
+    for(int i = 1; i < navigation_.get_content().size(); i++)
+    {
+        if(navigation_.get_content()[i][0].compare(GOAL_WS_ID) == 0)
+        {
+            found = true;
+        }
+    }    
+    //If the destinated Goal isn't containted in the CSV File Quit the Service with Response "Failed"
     if (!found) 
     {
-        if (global_print_debug) 
-        {
-            ROS_WARN_STREAM("The Goal " << GOAL_WS_ID << " doesn't exist in the CSV_File. Service Failed");
-        }
         navigation_.set_response("FAILED")
-        return BT::NodeStatus::FAILURE;
+        return BT::NodeStatus::SUCCESS;
     }
-
-    if (global_print_debug) 
-    {
-        ROS_INFO_STREAM("Got new Goal! The next destination is: " << GOAL_WS_ID);
-    }
-
     if (navigation_.get_near_by_WS()) 
     {
-        if (global_print_debug) 
-        {
-            ROS_INFO("Doing a Pushback to the previous NAV GOAL of the Robot in order to Navigate Normally!");
-        }
         navigation_.controll_Posecontroller(navigation_.get_Current_WS(), true);
-        if (global_print_debug)
-        {
-            ROS_INFO("Pushback Completed");
-        }
         navigation_.set_near_by_WS(false);
     }
-    return BT::NodeStatus::SUCCESS; 
+    return BT::NodeStatus::FAILURE;
 }  
 
-**
+/**
  *      @brief Constructor of the Nav_two class used to initialize the corresponding member variables.
  *      @param name The behavior tree node name.
  *      @param navigation The Navigation class object to access the neccesary data.
@@ -90,52 +79,41 @@ Nav_two::~Nav_two() = default;
 
 BT::NodeStatus Nav_two::tick() 
 {
-   if (navState == NavigationState::DRIVE_TO_FINISHED) {
-        if (GOAL_WS_ID.compare("FINISHED") == 0) {
-            if (global_print_debug) {
-                ROS_INFO("Robot is driving to the Endpose!");
-            }
-
-            send_nav_goal(search_line_in_csv("FINISHED"));
-
-            if (!ac.waitForResult(ros::Duration(time_to_navigate))) {
-                // First attempt failed due to timeout
-                if (global_print_debug) {
-                    ROS_WARN("Navigation Task to the Endpose failed for the first Time due to Timeout!");
-                    ROS_INFO("Sending the Endpose NAV_GOAL again!");
-                }
-                send_nav_goal(search_line_in_csv("FINISHED"));
-                if (!ac.waitForResult(ros::Duration(time_to_navigate))) {
-                    // Second attempt failed as well
-                    if (global_print_debug) {
-                        ROS_WARN("Navigation Failed for the second Time due to Timeout!");
-                        ROS_ERROR("Cancel the Navigation Task!!");
+        if (navigation_.get_request().destination.compare("FINISHED") == 0) 
+        {
+            navigation_.send_nav_goal(navigation_.search_line_in_csv("FINISHED"));
+            if (!navigation_.get_ac().waitForResult(ros::Duration(navigation_.get_time_to_navigate()))) 
+            {
+                    navigation_.send_nav_goal(navigation_.search_line_in_csv("FINISHED"));
+                    if (!navigation_.get_ac().waitForResult(ros::Duration(navigation_.get_time_to_navigate()))) 
+                    {
+                        navigation_.get_ac().cancelGoal();
+                        navigation_.set_response("FAILED");
+                        navigation_.set_Current_WS("nan");             
+                        return BT::NodeStatus::SUCCESS;
+                    } 
+                    else 
+                    {
+                        BT::NodeStatus var_one = navigation_.tickHandleNavigationResult();
+                        if(var_one = BT::NodeStatus::SUCCESS)
+                        {
+                            return BT::NodeStatus::SUCCESS;
+                        }
                     }
-                    ac.cancelGoal();
-                    res.status = "FAILED";
-                    Current_WS = "nan";
-                    resetNavigationState();  // Reset state for the next execution
-                    return BehaviorStatus::Failure;
-                } else {
-                    // Second attempt succeeded or failed for some other reason
-                    navState = NavigationState::HANDLE_NAV_RESULT;
-                    return BehaviorStatus::Running;
+            } 
+            else 
+            {
+                BT::NodeStatus var_two = navigation_.tickHandleNavigationTwo();
+                if(var_two = BT::NodeStatus::SUCCESS)
+                {
+                    return BT::NodeStatus::SUCCESS;
                 }
-            } else {
-                // First attempt succeeded or failed for some other reason
-                navState = NavigationState::HANDLE_NAV_RESULT;
-                return BehaviorStatus::Running;
-            }
-        } else {
-            resetNavigationState();  // Reset state if the goal is not FINISHED
-            return BehaviorStatus::Success;
+            } 
         }
-    }
-
-    return BehaviorStatus::Success;  // Indicate that the goal was not FINISHED
+    return BT::NodeStatus::FAILURE;
 }  
 
-**
+/**
  *      @brief Constructor of the Nav_three class used to initialize the corresponding member variables.
  *      @param name The behavior tree node name.
  *      @param navigation The Navigation class object to access the neccesary data.
@@ -159,43 +137,77 @@ Nav_three::~Nav_three() = default;
 
 BT::NodeStatus Nav_three::tick() 
 {
-    if(GOAL_WS_ID.compare("RECOVERY")==0){
-                if(global_print_debug == true){
-                    ROS_INFO("Robot is driving to a Recoverypose!");
-                }
-                send_nav_goal(search_line_in_csv("RECOVERY"));
-                if(!ac.waitForResult(ros::Duration(time_to_navigate))){//there is no result of the Navigation
-                    if(global_print_debug == true){
-                        ROS_WARN("Navigation Task to the Recoverypose failed due to Timeout!");
-                    }
-                    ac.cancelGoal();
-                    res.status = "FAILED";
-                    return true;
-                }
-                else{
-                    if(ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED){//Second Nav GOAL Reached successfully
-                        if(global_print_debug == true){
-                            ROS_INFO("Robot Reached the Recovery Position!");
-                        }
-                        res.status = "FINISHED";
-                        near_by_WS = false;
-                        Current_WS = "RECOVERY";
-                        //TODO: Experimental; Call makeplan to calculate distances
-                        //make_plan(true);
-                        return true;
-                    }
-                    if(ac.getState() == actionlib::SimpleClientGoalState::ABORTED){
-                        if(global_print_debug == true){
-                            ROS_WARN("Robot can't reach the Recovery Position!!");
-                            ROS_ERROR("Cancel NAV_GOAL and Service!!");
-                        }
-                        ac.cancelGoal();
-                        res.status = "FAILED";
-                        Current_WS = "nan";
-                        //TODO: Experimental; Call makeplan to calculate distances
-                        //make_plan(true);
-                        return true;
-                    }
-                }
+    if(navigation_.get_request().destination.compare("RECOVERY")==0)
+    {
+        navigation_.send_nav_goal(navigation_.search_line_in_csv("RECOVERY"));
+        if(!navigation_.get_ac().waitForResult(ros::Duration(navigation_.get_time_to_navigate())))
+        {
+            navigation_.get_ac().cancelGoal();
+            navigation_.set_response("FAILED");
+            return BT::NodeStatus::SUCCESS;
+        }
+        else
+        {
+            if(navigation_.get_ac().getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+            {             
+                navigation_.set_response("FINISHED"); 
+                navigation_.set_near_by_WS(false);                                                     
+                navigation_.set_Current_WS("RECOVERY");
+                return BT::NodeStatus::SUCCESS;
             }
+            if(navigation_.get_ac().getState() == actionlib::SimpleClientGoalState::ABORTED)
+            {
+                navigation_.get_ac().cancelGoal();
+                navigation_.set_response("FAILED");
+                navigation_.set_Current_WS("nan");
+                return BT::NodeStatus::SUCCESS;
+            }
+        }
+    }
+    return BT::NodeStatus::FAILURE;
+}  
+
+/**
+ *      @brief Constructor of the Nav_four class used to initialize the corresponding member variables.
+ *      @param name The behavior tree node name.
+ *      @param navigation The Navigation class object to access the neccesary data.
+ */
+
+Nav_four::Nav_four(const std::string& name, Navigation& navigation) : BT::SyncActionNode(name, {}), navigation_(navigation) 
+{
+
+}
+
+/**
+ * 	    @brief Destructor of class Nav_four.
+ */
+
+Nav_four::~Nav_four() = default;      
+
+/**
+ *      @brief Executes the tick operation of the node Nav_four.
+ *      @return The execution status of the node which in this case can be SUCCESS or FAILURE.
+ */
+
+BT::NodeStatus Nav_four::tick() 
+{
+    navigation_.send_nav_goal(navigation_.search_line_in_csv(navigation_.get_request().destination));
+
+    if(!navigation_.get_ac().waitForResult(ros::Duration(navigation_.get_time_to_navigate())))
+    {
+        BT::NodeStatus var_three = navigation_.tickHandleNavigationThree();
+        if(var_three = BT::NodeStatus::SUCCESS)
+        {
+            return BT::NodeStatus::SUCCESS;
+        }
+    }
+    else
+    {
+        BT::NodeStatus var_four = navigation_.tickHandleNavigationFour();
+        if(var_four = BT::NodeStatus::SUCCESS)
+        {
+            return BT::NodeStatus::SUCCESS;
+        }   
+    }
+    return BT::NodeStatus::FAILURE;
 }  
