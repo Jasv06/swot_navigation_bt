@@ -44,7 +44,7 @@ BT::NodeStatus Nav_one::tick()
     //If the destinated Goal isn't containted in the CSV File Quit the Service with Response "Failed"
     if (!found) 
     {
-        navigation_.set_response("FAILED")
+        navigation_.set_response("FAILED");
         return BT::NodeStatus::SUCCESS;
     }
     if (navigation_.get_near_by_WS()) 
@@ -82,12 +82,12 @@ BT::NodeStatus Nav_two::tick()
         if (navigation_.get_request().destination.compare("FINISHED") == 0) 
         {
             navigation_.send_nav_goal(navigation_.search_line_in_csv("FINISHED"));
-            if (!navigation_.get_ac().waitForResult(ros::Duration(navigation_.get_time_to_navigate()))) 
+            if (!navigation_.ac.waitForResult(ros::Duration(navigation_.get_time_to_navigate()))) 
             {
                     navigation_.send_nav_goal(navigation_.search_line_in_csv("FINISHED"));
-                    if (!navigation_.get_ac().waitForResult(ros::Duration(navigation_.get_time_to_navigate()))) 
+                    if (!navigation_.ac.waitForResult(ros::Duration(navigation_.get_time_to_navigate()))) 
                     {
-                        navigation_.get_ac().cancelGoal();
+                        navigation_.ac.cancelGoal();
                         navigation_.set_response("FAILED");
                         navigation_.set_Current_WS("nan");             
                         return BT::NodeStatus::SUCCESS;
@@ -95,7 +95,7 @@ BT::NodeStatus Nav_two::tick()
                     else 
                     {
                         BT::NodeStatus var_one = navigation_.tickHandleNavigationResult();
-                        if(var_one = BT::NodeStatus::SUCCESS)
+                        if(var_one == BT::NodeStatus::SUCCESS)
                         {
                             return BT::NodeStatus::SUCCESS;
                         }
@@ -104,7 +104,7 @@ BT::NodeStatus Nav_two::tick()
             else 
             {
                 BT::NodeStatus var_two = navigation_.tickHandleNavigationTwo();
-                if(var_two = BT::NodeStatus::SUCCESS)
+                if(var_two == BT::NodeStatus::SUCCESS)
                 {
                     return BT::NodeStatus::SUCCESS;
                 }
@@ -140,24 +140,24 @@ BT::NodeStatus Nav_three::tick()
     if(navigation_.get_request().destination.compare("RECOVERY")==0)
     {
         navigation_.send_nav_goal(navigation_.search_line_in_csv("RECOVERY"));
-        if(!navigation_.get_ac().waitForResult(ros::Duration(navigation_.get_time_to_navigate())))
+        if(!navigation_.ac.waitForResult(ros::Duration(navigation_.get_time_to_navigate())))
         {
-            navigation_.get_ac().cancelGoal();
+            navigation_.ac.cancelGoal();
             navigation_.set_response("FAILED");
             return BT::NodeStatus::SUCCESS;
         }
         else
         {
-            if(navigation_.get_ac().getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
+            if(navigation_.ac.getState() == actionlib::SimpleClientGoalState::SUCCEEDED)
             {             
                 navigation_.set_response("FINISHED"); 
                 navigation_.set_near_by_WS(false);                                                     
                 navigation_.set_Current_WS("RECOVERY");
                 return BT::NodeStatus::SUCCESS;
             }
-            if(navigation_.get_ac().getState() == actionlib::SimpleClientGoalState::ABORTED)
+            if(navigation_.ac.getState() == actionlib::SimpleClientGoalState::ABORTED)
             {
-                navigation_.get_ac().cancelGoal();
+                navigation_.ac.cancelGoal();
                 navigation_.set_response("FAILED");
                 navigation_.set_Current_WS("nan");
                 return BT::NodeStatus::SUCCESS;
@@ -193,10 +193,10 @@ BT::NodeStatus Nav_four::tick()
 {
     navigation_.send_nav_goal(navigation_.search_line_in_csv(navigation_.get_request().destination));
 
-    if(!navigation_.get_ac().waitForResult(ros::Duration(navigation_.get_time_to_navigate())))
+    if(!navigation_.ac.waitForResult(ros::Duration(navigation_.get_time_to_navigate())))
     {
         BT::NodeStatus var_three = navigation_.tickHandleNavigationThree();
-        if(var_three = BT::NodeStatus::SUCCESS)
+        if(var_three == BT::NodeStatus::SUCCESS)
         {
             return BT::NodeStatus::SUCCESS;
         }
@@ -204,7 +204,7 @@ BT::NodeStatus Nav_four::tick()
     else
     {
         BT::NodeStatus var_four = navigation_.tickHandleNavigationFour();
-        if(var_four = BT::NodeStatus::SUCCESS)
+        if(var_four == BT::NodeStatus::SUCCESS)
         {
             return BT::NodeStatus::SUCCESS;
         }   

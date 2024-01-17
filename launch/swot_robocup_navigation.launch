@@ -5,7 +5,7 @@
 
 
 <!-- Start the swot_robocup_navigation File-->
-<node pkg="swot_navigation" type="swot_navigation_node" name="swot_robocup_navigation" respawn="true" output="screen"> 
+<node pkg="swot_navigation" type="swot_navigation" name="Swot_Navigation_Node" respawn="true" output="screen"> 
 <param name="duration_recovery" value="20"/> <!-- How long the recovery behavior is allowed to execute, if this time (in seconds) is over, send "FINISHED" to the task planning and stop the recovery-->
 </node>
  

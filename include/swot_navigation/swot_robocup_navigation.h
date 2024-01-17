@@ -31,6 +31,8 @@ typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> Client;
 class Navigation{
 
     private:
+        std::string xml_file;
+
         //Nodehandle
         ros::NodeHandle nh;
 
@@ -39,9 +41,6 @@ class Navigation{
 
         //Service Client for starting the Posecontroller
         ros::ServiceClient Pose_Controller_Client;
-
-        //Actionlibclient for sending goals
-        Client ac;
 
         //Variables
         bool executing;                             //Robot is currently executing a navigation tast to a given Goal
@@ -89,7 +88,7 @@ class Navigation{
         void send_nav_goal(int CSV_Line);
 
         //This function handles the driving to multiple Controllerpositions and the Pushbacks
-        void controll_Posecontroller(std::string workspace, bool pushback);
+        void controll_Posecontroller(const std::string& workspace, bool pushback);
 
         //This function sends controller goals
         void send_controller_goal(int CSV_Line);
@@ -111,7 +110,6 @@ class Navigation{
 
         //get functions
         swot_msgs::SwotNavigation::Request get_request();
-        Client get_ac();
         bool get_executing();
         bool get_near_by_WS();
         std::string get_Current_WS();
@@ -132,4 +130,7 @@ class Navigation{
         
         // Tick function for handling the navigation result Four
         BT::NodeStatus tickHandleNavigationFour();
+
+        //Actionlibclient for sending goals
+        Client ac;
 };
