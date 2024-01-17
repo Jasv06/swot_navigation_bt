@@ -6,10 +6,10 @@
    <arg name="map_file_2" default="$(find swot_navigation)/maps/LAB_2023_09_03.yaml" oben loc unten Nav /> -->
 
   <!-- Raw - > not manipulated in gimp_map_amcl -->
-  <arg name="map_file_2" default="$(find swot_navigation)/maps/120923map.yaml"/>
+  <arg name="map_file_2" default="$(find swot_navigation)/maps/map.yaml"/>
 
   <!-- Raw - > manipulated in gimp for 0, 5cm _ map-->
-  <arg name="map_file_1" default="$(find swot_navigation)/maps/120923map.yaml" />
+  <arg name="map_file_1" default="$(find swot_navigation)/maps/map.yaml" />
   <!--<arg name="map_file_1" default="$(find swot_navigation)/maps/WC23_NAV_Ohne_0CM.yaml" />-->
 
 
