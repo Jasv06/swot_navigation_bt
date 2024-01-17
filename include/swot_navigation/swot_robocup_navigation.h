@@ -28,8 +28,6 @@
 
 typedef actionlib::SimpleActionClient<move_base_msgs::MoveBaseAction> Client;
 
-enum class NavigationState { DRIVE_TO_FINISHED, HANDLE_NAV_RESULT, HANDLE_NAV_RESULT_FROM_RECOVERY };
-
 class Navigation{
 
     private:
@@ -60,7 +58,6 @@ class Navigation{
         swot_msgs::SwotNavigation::Request request_;
         swot_msgs::SwotNavigation::Response response_;
         bool tree_status;
-        NavigationState navState;
 
     public:
 
@@ -123,10 +120,6 @@ class Navigation{
         std::vector<std::vector<std::string>> get_content();
         bool get_tree_status();
         float get_time_to_navigate();
-        NavigationState get_navState();
-
-        // Reset the navigation state
-        void resetNavigationState();
 
         // Tick function for handling the navigation result
         BT::NodeStatus tickHandleNavigationResult();

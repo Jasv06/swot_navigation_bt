@@ -16,7 +16,6 @@ Navigation::Navigation() : ac("move_base", true)
     CSV_RECOVERY = false;
     CSV_FINISHED = false;
     time_to_navigate = 45;
-    navState = NavigationState::DRIVE_TO_FINISHED;
 
     // Check if Action client works correctly
     waitForMoveBase();
@@ -345,17 +344,6 @@ bool Navigation::get_tree_status()
 float Navigation::get_time_to_navigate()
 {
     return this->time_to_navigate;
-}
-
-NavigationState Navigation::get_navState()
-{
-    return this->navState;
-}
-        
-// Reset the navigation state
-void Navigation::resetNavigationState() 
-{
-    navState = NavigationState::DRIVE_TO_FINISHED;
 }
 
 // Tick function for handling the navigation result
